@@ -1,0 +1,38 @@
+name: Terraform Plan
+
+on:
+  push:
+    paths:
+      - "test/terraform/**"
+  pull_request:
+    paths:
+      - "test/terraform/**"
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: test/terraform
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.6
+
+      - name: Terraform init
+        run: terraform init
+
+      - name: Terraform format check
+        run: terraform fmt -check
+
+      - name: Terraform validate
+        run: terraform validate
+
+      - name: Terraform plan
+        run: terraform plan -input=false
