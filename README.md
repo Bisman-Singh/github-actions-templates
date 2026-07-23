@@ -159,3 +159,5 @@ test/                     # Minimal fixtures that each workflow targets
   security/               # Dockerfile with an older base image for Trivy
   terraform/              # Docker provider config (no cloud needed)
 ```
+
+<sub><sup>Originally developed and tested locally during learning. Later organized and pushed to GitHub for portfolio visibility.</sup></sub>
